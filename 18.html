@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cute Review Page</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #ffe4e1; /* soft pink background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .review-container {
+      background: #fff0f5;
+      padding: 40px 60px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #ff69b4;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      cursor: pointer;
+    }
+
+    .star {
+      font-size: 45px;
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .star:hover {
+      transform: scale(1.4);
+      color: #ff1493;
+    }
+
+    .star.selected {
+      color: #ff1493;
+    }
+
+    .description {
+      margin-top: 25px;
+      font-size: 19px;
+      color: #ff69b4;
+      min-height: 40px;
+      transition: all 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+<div class="review-container">
+  <h2>Rate Your Experience</h2>
+  <div class="stars">
+    <span class="star" data-value="1">⭐</span>
+    <span class="star" data-value="2">⭐</span>
+    <span class="star" data-value="3">⭐</span>
+    <span class="star" data-value="4">⭐</span>
+    <span class="star" data-value="5">⭐</span>
+  </div>
+  <div class="description">Click a star to see your review!</div>
+</div>
+
+<script>
+  const stars = document.querySelectorAll('.star');
+  const description = document.querySelector('.description');
+
+  const descriptions = {
+    1: "Oh no! We'll try to do better next time 😢",
+    2: "Thanks! We'll improve and make it better 🙂",
+    3: "Good! Glad you liked it 😃",
+    4: "Great! Thanks for your amazing review 😍",
+    5: "Awesome! You made our day ✨❤"
+  };
+
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      const value = parseInt(star.dataset.value);
+
+      // Update selected stars
+      stars.forEach(s => {
+        if(parseInt(s.dataset.value) <= value){
+          s.classList.add('selected');
+        } else {
+          s.classList.remove('selected');
+        }
+      });
+
+      // Show description
+      description.textContent = descriptions[value];
+
+      // Cute pop animation
+      star.style.transform = 'scale(1.6)';
+      setTimeout(() => {
+        star.style.transform = '';
+      }, 200);
+    });
+  });
+</script>
+
+</body>
+</html>

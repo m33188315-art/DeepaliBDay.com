@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video with Audio Control</title>
+  <style>
+    /* Reset & body */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+    }
+h6 {
+  color: #fff; /* white color */
+  text-shadow: 1px 1px 5px black; /* optional – thoda glow aur contrast ke liye */
+  font-size: 16px; /* optional – thoda readable banane ke liye */
+gap from center="1px"
+}
+
+    /* Video container */
+    .video-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Video fits its resolution naturally */
+    video {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100vh;
+      border-radius: 10px;
+      display: block;
+    }
+
+    /* Button - top center */
+    button {
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #00FFFFF;
+      color: white;
+      transition: transform 0.2s, background-color 0.2s;
+      z-index: 10;
+    }
+
+    button:hover {
+      transform: translateX(-50%) scale(1.1);
+      background-color: #ff1493;
+    }
+
+    /* Optional overlay text */
+    .content {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 8px black;
+    }
+
+    .content h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+
+    .content p {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  /* Stylish Button */
+    .btn-next {
+      position:fixed;
+      bottom:40px;
+      padding:14px 36px;
+      font-size:18px;
+      font-weight:600;
+      border:none;
+      border-radius:50px; /* makes pill shape */
+      color:#fff;
+      cursor:pointer;
+      background:linear-gradient(90deg, #ff6ec4, #7873f5);
+      box-shadow:0 6px 16px rgba(0,0,0,0.25);
+      transition:all 0.3s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn-next:hover {
+      transform:translateY(-3px) scale(1.05);
+      box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    }
+    .btn-next svg {
+      width:20px;
+      height:20px;
+      fill:white;
+      transition:transform 0.3s ease;
+    }
+    .btn-next:hover svg {
+      transform:translateX(5px);
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <!-- Video -->
+    <video id="bgVideo" autoplay muted loop>
+      <source src="video/video1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Toggle Button -->
+    <button onclick="toggleMute()">🔊 </button>
+
+    <!-- Optional Text Overlay -->
+    <div class="content">
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const video = document.getElementById('bgVideo');
+
+    function toggleMute() {
+      video.muted = !video.muted;
+      alert(video.muted ? "🔇 Video Muted" : "🔊 Video Unmuted");
+    }
+  </script>
+<a href="3.html" class="btn-next">
+    SLAP ME👋🏻
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M10 17l5-5-5-5v10z"/>
+    </svg>
+
+</body>
+</html>

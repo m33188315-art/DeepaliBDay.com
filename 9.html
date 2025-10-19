@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Music Player</title>
+  <style>
+     body {
+      margin:0;
+      height:100vh;
+      background:linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      font-family:'Arial', sans-serif;
+      text-align:center;
+      color:#fff;
+    }
+    h1 {
+      font-size:50px;
+      margin:0 0 20px 0;
+      text-shadow:0 3px 8px rgba(0,0,0,0.3);
+    }
+    p {
+      font-size:20px;
+      margin-bottom:80px;
+    }
+    .player {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      width: 320px;
+      transition: 0.3s;
+    }
+
+    .player:hover {
+      transform: scale(1.05);
+    }
+
+    .album-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .album-art {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+      animation: rotate 10s linear infinite;
+      animation-play-state: paused;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .glow {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.2), transparent 70%);
+      animation: pulse 2s infinite;
+      animation-play-state: paused;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .song-info h2 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+    }
+
+    .song-info p {
+      margin: 0 0 20px;
+      color: #ccc;
+    }
+
+    .controls button {
+      background: none;
+      border: 2px solid cyan;
+      color: cyan;
+      border-radius: 50%;
+      padding: 15px 18px;
+      font-size: 22px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .controls button:hover {
+      background: cyan;
+      color: #111;
+      transform: scale(1.1);
+    }
+
+    /* Stylish Button */
+    .btn-next {
+      position:fixed;
+      bottom:1px;
+      padding:14px 36px;
+      font-size:18px;
+      font-weight:600;
+      border:none;
+      border-radius:50px; /* makes pill shape */
+      color:#fff;
+      cursor:pointer;
+      background:linear-gradient(90deg, #ff6ec4, #7873f5);
+      box-shadow:0 6px 16px rgba(0,0,0,0.25);
+      transition:all 0.3s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn-next:hover {
+      transform:translateY(-3px) scale(1.05);
+      box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    }
+    .btn-next svg {
+      width:20px;
+      height:20px;
+      fill:white;
+      transition:transform 0.3s ease;
+    }
+    .btn-next:hover svg {
+      transform:translateX(5px);
+    }
+  </style>
+</head>
+<body>
+<h1> Song🎵🎼</h1>
+  <div class="player">
+    <div class="album-container">
+      <div class="glow"></div>
+      <img src="images/audio.jpg" alt="Album Art" class="album-art" id="albumArt">
+    </div>
+    <div class="song-info">
+      <h2>Banarasiya</h2>
+      <p>by DJ Dreamer</p>
+    </div>
+
+    <div class="controls">
+      <button id="playPauseBtn">▶</button>
+    </div>
+
+    <audio id="audioPlayer">
+      <source src="audio/audio.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const audio = document.getElementById("audioPlayer");
+    const albumArt = document.getElementById("albumArt");
+    const glow = document.querySelector(".glow");
+
+    playPauseBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = "⏸";
+        albumArt.style.animationPlayState = "running";
+        glow.style.animationPlayState = "running";
+      } else {
+        audio.pause();
+        playPauseBtn.textContent = "▶";
+        albumArt.style.animationPlayState = "paused";
+        glow.style.animationPlayState = "paused";
+      }
+    });
+  </script>
+  <a href="10.html" class="btn-next">
+    SLAP ME👋🏻
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M10 17l5-5-5-5v10z"/>
+    </svg>
+  </a>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!-- save as figure-caption.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Image with Caption</title>
+  <style>
+     body {
+      margin:0;
+      height:100vh;
+      background:linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      font-family:'Arial', sans-serif;
+      text-align:center;
+      color:#fff;
+    }
+    h1 {
+      font-size:50px;
+      margin:0 0 20px 0;
+      text-shadow:0 3px 8px rgba(0,0,0,0.3);
+    }
+    p {
+      font-size:20px;
+      margin-bottom:80px;
+    }
+wood-frame {
+    display: inline-block;
+    padding: 15px;
+    border: 15px solid #8B4513; /* Brown wooden color */
+    border-radius: 12px;
+    background: linear-gradient(135deg, #a0522d, #8b4513, #a0522d); /* Wood texture gradient */
+    box-shadow: 0 0 20px rgba(0,0,0,0.3); /* Frame depth shadow */
+  }
+
+  .wood-frame img {
+    display: block;
+    width: 300px;        /* Adjust as you like */
+    height: auto;
+    border-radius: 8px;  /* Slightly rounded corners inside frame */
+  }
+
+    /* Stylish Button */
+    .btn-next {
+      position:fixed;
+      bottom:1px;
+      padding:14px 36px;
+      font-size:18px;
+      font-weight:600;
+      border:none;
+      border-radius:50px; /* makes pill shape */
+      color:#fff;
+      cursor:pointer;
+      background:linear-gradient(90deg, #ff6ec4, #7873f5);
+      box-shadow:0 6px 16px rgba(0,0,0,0.25);
+      transition:all 0.3s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn-next:hover {
+      transform:translateY(-3px) scale(1.05);
+      box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    }
+    .btn-next svg {
+      width:20px;
+      height:20px;
+      fill:white;
+      transition:transform 0.3s ease;
+    }
+    .btn-next:hover svg {
+      transform:translateX(5px);
+    }
+  </style>
+</head>
+<body>
+  <figure>
+    <!-- replace src and alt with your image -->
+    <figcaption><div class="meta"><h1><i>Movie🎥🎬</i></h1></div>
+    </figcaption>
+ <img src="images/Movie.jpg" alt="framedphoto">
+  </figure>
+ <a href="12.html" class="btn-next">
+    SLAP ME👋🏻
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M10 17l5-5-5-5v10z"/>
+    </svg>
+  </a>
+</body>
+</body>
+</html>
